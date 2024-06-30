@@ -1,15 +1,19 @@
 import { Tabs } from "expo-router";
 import React from "react";
 
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 import IonIcon from "react-native-vector-icons/Ionicons";
 import EntypoIcon from "react-native-vector-icons/Entypo";
-import { View } from "react-native";
 
-export default function TabLayout() {
+import { NativeWindStyleSheet, withExpoSnack } from "nativewind";
+
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
+
+function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
@@ -67,3 +71,5 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+export default withExpoSnack(TabLayout);
