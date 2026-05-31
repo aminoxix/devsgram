@@ -1,3 +1,5 @@
+import "../global.css";
+
 import {
   DarkTheme,
   DefaultTheme,
@@ -13,12 +15,6 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
-
-import { NativeWindStyleSheet, withExpoSnack } from "nativewind";
-
-NativeWindStyleSheet.setOutput({
-  default: "native",
-});
 
 function RootLayout() {
   const colorScheme = useColorScheme();
@@ -46,4 +42,4 @@ function RootLayout() {
   );
 }
 
-export default withExpoSnack(RootLayout);
+export default RootLayout;

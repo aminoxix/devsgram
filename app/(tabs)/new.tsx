@@ -1,17 +1,13 @@
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { Ionicons } from "@expo/vector-icons";
-import { Alert, Button, StyleSheet, TextInput } from "react-native";
-import { useForm, Controller } from "react-hook-form";
 import * as DocumentPicker from "expo-document-picker";
 import { useState } from "react";
-import { PostDTO } from "../../../backend/src/post/dto/post.dto";
-import { ThemedView } from "@/components/ThemedView";
-import { styled } from "nativewind";
-
+import { Controller, useForm } from "react-hook-form";
+import { Button, StyleSheet, TextInput } from "react-native";
+import { PostDTO } from "../../../backend/rc/post/dto/post.dto";
 const NewPost = () => {
-  const StyledButton = styled(Button);
-
   const { control, handleSubmit } = useForm();
   const [assets, setAssets] = useState<string[]>([]);
 
@@ -56,7 +52,7 @@ const NewPost = () => {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
           },
-        }
+        },
       );
       const url = await response.text();
       if (!url) return;
@@ -114,7 +110,7 @@ const NewPost = () => {
               "Content-Type": "application/json",
               "Access-Control-Allow-Origin": "*",
             },
-          }
+          },
         );
         const res = await response.text();
         console.log(res);
@@ -172,17 +168,9 @@ const NewPost = () => {
       <ThemedText type="subtitle">Assets</ThemedText>
       <Button title="Pick Document" onPress={pickDocument} />
       <ThemedView style={styles.buttonContainer}>
-        <StyledButton title="Drafts" onPress={onSubmit(false)} />
-        <StyledButton
-          title="Publish"
-          className="text-green-500"
-          onPress={onSubmit(true)}
-        />
-        <StyledButton
-          title="Discard"
-          className="text-red-500"
-          onPress={() => form.reset()}
-        />
+        <Button title="Drafts" onPress={onSubmit(false)} />
+        <Button title="Publish" color="green" onPress={onSubmit(true)} />
+        <Button title="Discard" color="red" onPress={() => form.reset()} />
       </ThemedView>
     </ParallaxScrollView>
   );

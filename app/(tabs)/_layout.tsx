@@ -1,17 +1,10 @@
 import { Tabs } from "expo-router";
-import React from "react";
 
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-import IonIcon from "react-native-vector-icons/Ionicons";
 import EntypoIcon from "react-native-vector-icons/Entypo";
-
-import { NativeWindStyleSheet, withExpoSnack } from "nativewind";
-
-NativeWindStyleSheet.setOutput({
-  default: "native",
-});
+import IonIcon from "react-native-vector-icons/Ionicons";
 
 function TabLayout() {
   const colorScheme = useColorScheme();
@@ -72,4 +65,4 @@ function TabLayout() {
   );
 }
 
-export default withExpoSnack(TabLayout);
+export default TabLayout;
